@@ -27,6 +27,28 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import Vue from 'vue'
+import router from "./router";
+import store from "./store";
+
+import App from "./App";
+
+import { mapGetters, mapActions } from 'vuex'
+
 const app = new Vue({
     el: '#app',
+
+    router,
+
+    store,
+
+    components: { App },
+
+    computed: {
+        ...mapGetters['authCheck', 'authUser']
+    },
+
+    methods: {
+        ...mapActions(['getUserProfile'])
+    }
 });
